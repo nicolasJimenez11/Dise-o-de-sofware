@@ -1,0 +1,223 @@
+class Pais {
+    private String nombre;
+
+    public Pais(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Pais: " + nombre;
+    }
+}
+
+// Clase Autor
+class Autor {
+    private String nombre;
+    private Pais pais;
+
+    public Autor(String nombre, Pais pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    @Override
+    public String toString() {
+        return "Autor: " + nombre + ", " + pais;
+    }
+}
+
+// Clase Editorial
+class Editorial {
+    private String nombre;
+    private Pais pais;
+
+    public Editorial(String nombre, Pais pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    @Override
+    public String toString() {
+        return "Editorial: " + nombre + ", " + pais;
+    }
+}
+
+// Clase Fecha
+class Fecha {
+    private int dia;
+    private int mes;
+    private int anio;
+
+    public Fecha(int dia, int mes, int anio) {
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    @Override
+    public String toString() {
+        return dia + "/" + mes + "/" + anio;
+    }
+}
+
+// Clase Estudiante
+class Estudiante {
+    private String nombre;
+    private int cc;
+
+    public Estudiante(String nombre, int cc) {
+        this.nombre = nombre;
+        this.cc = cc;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCC() {
+        return cc;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante: " + nombre + ", CC: " + cc;
+    }
+}
+
+// Clase Prestamo
+class Prestamo {
+    private Estudiante estudiante;
+    private Fecha fechaPrestamo;
+    private Fecha fechaDevolucion;
+
+    public Prestamo(Estudiante estudiante, Fecha fechaPrestamo, Fecha fechaDevolucion) {
+        this.estudiante = estudiante;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public Fecha getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public Fecha getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo hecho por: " + estudiante + "\nFecha de Prestamo: " + fechaPrestamo +
+               "\nFecha de Devolucion: " + fechaDevolucion;
+    }
+}
+
+// Clase Libro
+class Libro {
+    private String titulo;
+    private String edicion;
+    private int numeroPaginas;
+    private Autor autor;
+    private Editorial editorial;
+
+    public Libro(String titulo, String edicion, int numeroPaginas, Autor autor, Editorial editorial) {
+        this.titulo = titulo;
+        this.edicion = edicion;
+        this.numeroPaginas = numeroPaginas;
+        this.autor = autor;
+        this.editorial = editorial;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getEdicion() {
+        return edicion;
+    }
+
+    public int getNumeroPaginas() {
+        return numeroPaginas;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro: " + titulo + ", Edición: " + edicion + ", Número de páginas: " + numeroPaginas +
+               "\nAutor: " + autor + "\nEditorial: " + editorial;
+    }
+}
+
+// Clase principal para ejecutar el programa
+public class Biblioteca {
+    public static void main(String[] args) {
+        // Crear un país
+        Pais pais = new Pais("Colombia");
+
+        // Crear un autor
+        Autor autor = new Autor("Gabriel García Márquez", pais);
+
+        // Crear una editorial
+        Editorial editorial = new Editorial("Penguin Random House", pais);
+
+        // Crear un libro
+        Libro libro = new Libro("Cien Años de Soledad", "Primera", 471, autor, editorial);
+
+        // Crear un estudiante
+        Estudiante estudiante = new Estudiante("Juan Pérez", 12345678);
+
+        // Crear fechas
+        Fecha fechaPrestamo = new Fecha(1, 9, 2023);
+        Fecha fechaDevolucion = new Fecha(1, 10, 2023);
+
+        // Crear un préstamo
+        Prestamo prestamo = new Prestamo(estudiante, fechaPrestamo, fechaDevolucion);
+
+        // Mostrar información
+        System.out.println(libro);
+        System.out.println(prestamo);
+    }
+}
