@@ -1,0 +1,152 @@
+
+// Clase TipoProducto
+public class TipoProducto {
+    private String codigo;
+    private String descripcion;
+    private float porcentajeIVA;
+
+    public TipoProducto(String codigo, String descripcion, float porcentajeIVA) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.porcentajeIVA = porcentajeIVA;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public float getPorcentajeIVA() {
+        return porcentajeIVA;
+    }
+}
+
+// Clase Producto
+public class Producto {
+    private String codigo;
+    private float precioVenta;
+    private int cantidadActual;
+    private Proveedor proveedor;
+    private TipoProducto tipoProducto;
+
+    public Producto(String codigo, float precioVenta, int cantidadActual, Proveedor proveedor, TipoProducto tipoProducto) {
+        this.codigo = codigo;
+        this.precioVenta = precioVenta;
+        this.cantidadActual = cantidadActual;
+        this.proveedor = proveedor;
+        this.tipoProducto = tipoProducto;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public float getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public int getCantidadActual() {
+        return cantidadActual;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+}
+
+// Clase Cliente
+public class Cliente {
+    private int id;
+    private String nombre;
+
+    public Cliente(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+}
+
+// Clase DetalleVenta
+public class DetalleVenta {
+    private Producto producto;
+    private int cantidad;
+
+    public DetalleVenta(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+}
+
+// Clase Venta
+import java.util.ArrayList;
+
+public class Venta {
+    private Cliente cliente;
+    private ArrayList<DetalleVenta> listaDetalle;
+
+    public Venta(Cliente cliente) {
+        this.cliente = cliente;
+        this.listaDetalle = new ArrayList<>();
+    }
+
+    public void agregarDetalle(DetalleVenta detalleVenta) {
+        listaDetalle.add(detalleVenta);
+    }
+
+    public void mostrarVenta() {
+        System.out.println("Cliente: " + cliente.getNombre());
+        for (DetalleVenta detalle : listaDetalle) {
+            Producto producto = detalle.getProducto();
+            System.out.println("Producto: " + producto.getCodigo() + ", Cantidad: " + detalle.getCantidad() +
+                    ", Precio Unitario: " + producto.getPrecioVenta());
+        }
+        System.out.println("Fin de la venta");
+    }
+}
+
+// Clase Principal (Main)
+public class Main {
+    public static void main(String[] args) {
+        // Crear Proveedor y TipoProducto
+        Proveedor proveedor1 = new Proveedor(1, "Proveedor A");
+        TipoProducto tipoProducto1 = new TipoProducto("TP001", "Tipo Producto 1", 18.0f);
+
+        // Crear Producto
+        Producto producto1 = new Producto("P001", 100.0f, 50, proveedor1, tipoProducto1);
+
+        // Crear Cliente
+        Cliente cliente1 = new Cliente(1, "Juan Pérez");
+
+        // Crear Venta
+        Venta venta1 = new Venta(cliente1);
+
+        // Crear DetalleVenta y agregar a la venta
+        DetalleVenta detalle1 = new DetalleVenta(producto1, 2);
+        venta1.agregarDetalle(detalle1);
+
+        // Mostrar la venta
+        venta1.mostrarVenta();
+    }
+}
