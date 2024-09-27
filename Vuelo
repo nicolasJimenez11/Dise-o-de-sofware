@@ -1,0 +1,308 @@
+import java.util.List;
+
+public class Vuelo {
+    private int numero;
+    private String ciudadSalida;
+    private String ciudadDestino;
+    private String hora;
+    private int duracion;
+    private Piloto piloto;
+    private List<Pasajero> listaPasajeros;
+
+    public Vuelo(int numero, String ciudadSalida, String ciudadDestino, String hora, int duracion, Piloto piloto, List<Pasajero> listaPasajeros) {
+        this.numero = numero;
+        this.ciudadSalida = ciudadSalida;
+        this.ciudadDestino = ciudadDestino;
+        this.hora = hora;
+        this.duracion = duracion;
+        this.piloto = piloto;
+        this.listaPasajeros = listaPasajeros;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getCiudadSalida() {
+        return ciudadSalida;
+    }
+
+    public void setCiudadSalida(String ciudadSalida) {
+        this.ciudadSalida = ciudadSalida;
+    }
+
+    public String getCiudadDestino() {
+        return ciudadDestino;
+    }
+
+    public void setCiudadDestino(String ciudadDestino) {
+        this.ciudadDestino = ciudadDestino;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public Piloto getPiloto() {
+        return piloto;
+    }
+
+    public void setPiloto(Piloto piloto) {
+        this.piloto = piloto;
+    }
+
+    public List<Pasajero> getListaPasajeros() {
+        return listaPasajeros;
+    }
+
+    public void setListaPasajeros(List<Pasajero> listaPasajeros) {
+        this.listaPasajeros = listaPasajeros;
+    }
+
+    public String getInfoPasajeros() {
+        StringBuilder info = new StringBuilder();
+        for (Pasajero pasajero : listaPasajeros) {
+            info.append(pasajero.toString()).append("\n");
+        }
+        return info.toString();
+    }
+}
+import java.util.List;
+
+public class Agencia {
+    private String nombre;
+    private List<Vuelo> vuelos;
+
+    public Agencia(String nombre, List<Vuelo> vuelos) {
+        this.nombre = nombre;
+        this.vuelos = vuelos;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Vuelo> getVuelos() {
+        return vuelos;
+    }
+
+    public void setVuelos(List<Vuelo> vuelos) {
+        this.vuelos = vuelos;
+    }
+
+    public void mostrarInformacionVuelos() {
+        for (Vuelo vuelo : vuelos) {
+            System.out.println("Vuelo " + vuelo.getNumero() + ":");
+            System.out.println("Salida: " + vuelo.getCiudadSalida());
+            System.out.println("Destino: " + vuelo.getCiudadDestino());
+            System.out.println("Pasajeros: " + vuelo.getInfoPasajeros());
+        }
+    }
+}
+public class Pasajero {
+    private int identificador;
+    private String nombre;
+    private int edad;
+    private String genero;
+    private Silla silla;
+
+    public Pasajero(int identificador, String nombre, int edad, String genero, Silla silla) {
+        this.identificador = identificador;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.genero = genero;
+        this.silla = silla;
+    }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Silla getSilla() {
+        return silla;
+    }
+
+    public void setSilla(Silla silla) {
+        this.silla = silla;
+    }
+
+    @Override
+    public String toString() {
+        return "Pasajero{" +
+                "identificador=" + identificador +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", silla=" + silla +
+                '}';
+    }
+}
+public class Silla {
+    private int numero;
+    private char fila;
+    private String tipo;
+
+    public Silla(int numero, char fila, String tipo) {
+        this.numero = numero;
+        this.fila = fila;
+        this.tipo = tipo;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public char getFila() {
+        return fila;
+    }
+
+    public void setFila(char fila) {
+        this.fila = fila;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Silla{" +
+                "numero=" + numero +
+                ", fila=" + fila +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
+}
+public class Piloto {
+    private String nombre;
+    private int horasVuelo;
+    private String especialidad;
+
+    public Piloto(String nombre, int horasVuelo, String especialidad) {
+        this.nombre = nombre;
+        this.horasVuelo = horasVuelo;
+        this.especialidad = especialidad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getHorasVuelo() {
+        return horasVuelo;
+    }
+
+    public void setHorasVuelo(int horasVuelo) {
+        this.horasVuelo = horasVuelo;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    @Override
+    public String toString() {
+        return "Piloto{" +
+                "nombre='" + nombre + '\'' +
+                ", horasVuelo=" + horasVuelo +
+                ", especialidad='" + especialidad + '\'' +
+                '}';
+    }
+}
+public class Ciudad {
+    private String nombre;
+    private String poblacion;
+
+    public Ciudad(String nombre, String poblacion) {
+        this.nombre = nombre;
+        this.poblacion = poblacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPoblacion() {
+        return poblacion;
+    }
+
+    public void setPoblacion(String poblacion) {
+        this.poblacion = poblacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Ciudad{" +
+                "nombre='" + nombre + '\'' +
+                ", poblacion='" + poblacion + '\'' +
+                '}';
+    }
+}
