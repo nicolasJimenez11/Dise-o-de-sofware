@@ -9,13 +9,13 @@ public Corriente(int NCuenta, String dueno, int saldo, int sobreGiro) {
 
 @Override
 public void deposito(int valor) {
-    // TODO Auto-generated method stub
+   
     this.saldo+=valor;
 }
 
 @Override
 public void retiro(int valor) {
-    // TODO Auto-generated method stub
+    
     if(valor <= (this.saldo+this.sobreGiro)){
         this.saldo-=valor;
     }else {

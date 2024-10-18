@@ -8,16 +8,16 @@ public class Ahorro extends Cuenta {
 
 @Override
 public void deposito(int valor) {
-    // TODO Auto-generated method stub
-    saldo+=valor; //Valor del deposito agregado a la cuenta
-    saldo+=valor*interes; //Intereses que genera el banco por la transaccion
+    
+    saldo+=valor; 
+    saldo+=valor*interes; 
 }
 
 @Override
 public void retiro(int valor) {
-    // TODO Auto-generated method stub
+    
     if(valor <= saldo){
-        saldo-=valor; // Si hay saldo suficiente, se retira el valor
+        saldo-=valor; 
        }else{
         System.out.println("Saldo no posible ");
        }

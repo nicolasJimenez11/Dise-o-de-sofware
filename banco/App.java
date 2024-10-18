@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Ahorro dueno1 = new Ahorro(101254646, "nicolas JImenez");
-        Ahorro dueno2 = new Ahorro(215632124, "david lopez");
+        Ahorro dueno1 = new Ahorro(331222145, "nicolas JImenez");
+        Ahorro dueno2 = new Ahorro(765432223, "david lopez");
 
         dueno1.deposito(5000);
         dueno2.deposito(60000);
