@@ -1,12 +1,12 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Ahorro persona1 = new Ahorro(101254646, "Jorge Ramirez");
-        Ahorro persona2 = new Ahorro(215632124, "Celia Ramirez");
+        Ahorro dueno1 = new Ahorro(101254646, "nicolas JImenez");
+        Ahorro dueno2 = new Ahorro(215632124, "david lopez");
 
-        persona1.deposito(10000);
-        persona2.deposito(10000);
+        dueno1.deposito(5000);
+        dueno2.deposito(60000);
 
-        System.out.println(persona1.toString());
-        System.out.println(persona2.toString());
+        System.out.println(dueno1.toString());
+        System.out.println(dueno2.toString());
     }
 }
