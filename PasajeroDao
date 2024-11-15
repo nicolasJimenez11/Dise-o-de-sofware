@@ -1,0 +1,11 @@
+package pasajeroCon;
+
+import java.util.List;
+
+public interface PasajeroDao {
+    boolean create(Pasajero pasajero);
+    Pasajero read(int id);
+    Pasajero update(Pasajero pasajero);
+    boolean delete(Pasajero pasajero);
+    List<Pasajero> consultarTodos();
+}

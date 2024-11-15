@@ -1,0 +1,62 @@
+package pasajeroCon;
+import java.util.ArrayList;
+import java.util.List;
+
+public class pasajeroDAOImple implements PasajeroDao {
+    private List<Pasajero> pasajeros;
+
+
+    public pasajeroDAOImple() {
+        this.pasajeros = new ArrayList<>();
+    }
+
+   
+    @Override
+    public boolean create(Pasajero pasajero) {
+        if (pasajero == null) {
+            return false;
+        }
+        return pasajeros.add(pasajero);
+    }
+
+   
+    @Override
+    public Pasajero read(int id) {
+        for (Pasajero pasajero : pasajeros) {
+            if (pasajero.getId() == id) { 
+                return pasajero;
+            }
+        }
+        return null; 
+    }
+
+
+    @Override
+    public Pasajero update(Pasajero pasajero) {
+        if (pasajero == null) {
+            return null;
+        }
+        for (int i = 0; i < pasajeros.size(); i++) {
+            if (pasajeros.get(i).getId() == pasajero.getId()) { 
+                pasajeros.set(i, pasajero); 
+                return pasajero;
+            }
+        }
+        return null; 
+    }
+
+
+    @Override
+    public boolean delete(Pasajero pasajero) {
+        if (pasajero == null) {
+            return false;
+        }
+        return pasajeros.remove(pasajero); 
+    }
+
+  
+    @Override
+    public List<Pasajero> consultarTodos() {
+        return new ArrayList<>(pasajeros); 
+    }
+}
