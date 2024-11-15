@@ -1,0 +1,27 @@
+package pasajeroCon;
+
+import java.util.List;
+
+public class ControllerPasajero {
+    private PasajeroDao pasajeroDao = new pasajeroDAOImple();
+
+    public boolean agregarPasajero(Pasajero pasajero) {
+        return pasajeroDao.create(pasajero);
+    }
+
+    public Pasajero buscarPasajero(int id) {
+        return pasajeroDao.read(id);
+    }
+
+    public Pasajero actualizarPasajero(Pasajero pasajero) {
+        return pasajeroDao.update(pasajero);
+    }
+
+    public boolean eliminarPasajero(Pasajero pasajero) {
+        return pasajeroDao.delete(pasajero);
+    }
+
+    public List<Pasajero> obtenerTodosLosPasajeros() {
+        return pasajeroDao.consultarTodos();
+    }
+}

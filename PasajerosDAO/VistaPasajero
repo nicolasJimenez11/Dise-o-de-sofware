@@ -1,0 +1,109 @@
+package pasajeroCon;
+
+import java.util.Scanner;
+
+public class VistaPasajero {
+    private ControllerPasajero controller = new ControllerPasajero();
+    private Scanner scanner = new Scanner(System.in);
+
+    public void mostrarMenu() {
+        int opcion;
+        do {
+            System.out.println("=== Menú Pasajeros ===");
+            System.out.println("1. Agregar Pasajero");
+            System.out.println("2. Buscar Pasajero");
+            System.out.println("3. Actualizar Pasajero");
+            System.out.println("4. Eliminar Pasajero");
+            System.out.println("5. Consultar todos los Pasajeros");
+            System.out.println("6. Salir");
+            System.out.print("Elige una opción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    agregarPasajero();
+                    break;
+                case 2:
+                    buscarPasajero();
+                    break;
+                case 3:
+                    actualizarPasajero();
+                    break;
+                case 4:
+                    eliminarPasajero();
+                    break;
+                case 5:
+                    consultarTodos();
+                    break;
+                case 6:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (opcion != 6);
+    }
+
+    private void agregarPasajero() {
+        System.out.print("ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Edad: ");
+        int edad = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Genero: ");
+        String genero = scanner.nextLine();
+        Pasajero pasajero = new Pasajero(id, nombre, edad, genero);
+        controller.agregarPasajero(pasajero);
+        System.out.println("Pasajero agregado correctamente");
+    }
+
+    private void buscarPasajero() {
+        System.out.print("ID del Pasajero: ");
+        int id = scanner.nextInt();
+        Pasajero pasajero = controller.buscarPasajero(id);
+        System.out.println(pasajero != null ? pasajero : "Pasajero no encontrado");
+    }
+
+    private void actualizarPasajero() {
+        System.out.print("ID del Pasajero a actualizar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nuevo Nombre: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Nueva Edad: ");
+        int edad = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nuevo Genero: ");
+        String genero = scanner.nextLine();
+        Pasajero pasajero = new Pasajero(id, nombre, edad, genero);
+        controller.actualizarPasajero(pasajero);
+        System.out.println("Pasajero actualizado correctamente");
+    }
+
+    private void eliminarPasajero() {
+        System.out.print("ID del Pasajero a eliminar: ");
+        int id = scanner.nextInt();
+        Pasajero pasajero = controller.buscarPasajero(id);
+        if (pasajero != null) {
+            controller.eliminarPasajero(pasajero);
+            System.out.println("Pasajero eliminado correctamente");
+        } else {
+            System.out.println("Pasajero no encontrado");
+        }
+    }
+
+    private void consultarTodos() {
+        System.out.println("Lista de todos los Pasajeros:");
+        for (Pasajero p : controller.obtenerTodosLosPasajeros()) {
+            System.out.println(p);
+        }
+    }
+
+    public static void main(String[] args) {
+        VistaPasajero vista = new VistaPasajero();
+        vista.mostrarMenu();
+    }
+}
